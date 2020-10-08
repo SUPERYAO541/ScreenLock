@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="accessibility_service_description">需透过 Accessibility Service 才能锁定屏幕。</string>
+
+    <string name="app_name">一键锁屏</string>
+
+    <string name="launcher">锁屏</string>
+</resources>
