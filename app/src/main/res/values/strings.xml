@@ -4,5 +4,7 @@
 
     <string name="app_name">Screen Lock</string>
 
+    <string name="exception">Lock the screen failed, this device may not be supported:</string>
+
     <string name="launcher">Lock</string>
 </resources>
