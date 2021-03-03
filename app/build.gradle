@@ -9,8 +9,8 @@ android {
         applicationId "com.superyao.screenlock"
         minSdkVersion 28
         targetSdkVersion 30
-        versionCode 5
-        versionName '1.0.3'
+        versionCode 6
+        versionName '1.0.4'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -20,6 +20,10 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
         }
     }
     compileOptions {

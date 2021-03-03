@@ -18,23 +18,22 @@ class ScreenLockService : AccessibilityService() {
 
     override fun onInterrupt() {}
 
-    override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int =
-        try {
-            if (!performGlobalAction(GLOBAL_ACTION_LOCK_SCREEN)) {
-                // failed, open the accessibility settings
-                startActivity(
-                    Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS).apply {
-                        addFlags(Intent.FLAG_RECEIVER_FOREGROUND)
-                    }
-                )
+    override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int = try {
+        if (!performGlobalAction(GLOBAL_ACTION_LOCK_SCREEN)) {
+            // failed, open the accessibility settings
+            Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS).apply {
+                addFlags(Intent.FLAG_RECEIVER_FOREGROUND)
+            }.run {
+                startActivity(this)
             }
-            super.onStartCommand(intent, flags, startId)
-        } catch (e: Exception) {
-            Toast.makeText(
-                this,
-                "${getString(R.string.exception)} ${e.message}",
-                Toast.LENGTH_LONG
-            ).show()
-            super.onStartCommand(intent, flags, startId)
         }
+        super.onStartCommand(intent, flags, startId)
+    } catch (e: Exception) {
+        Toast.makeText(
+            this,
+            "${getString(R.string.exception)} ${e.message}",
+            Toast.LENGTH_LONG
+        ).show()
+        super.onStartCommand(intent, flags, startId)
+    }
 }
